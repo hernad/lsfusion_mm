@@ -1,6 +1,6 @@
-//#header
-//#module
+// # header
+// # module
 MODULE Main;
-//#module end
-// описание логики : https://documentation.lsfusion.org/pages/viewpage.action?pageId=2228636
-//#header end
+// # module end
+// logic description: https://documentation.lsfusion.org/pages/viewpage.action?pageId=2228636
+// # header end
