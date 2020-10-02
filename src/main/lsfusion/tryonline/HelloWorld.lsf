@@ -1,9 +1,9 @@
-//#header
+// # header
 MODULE HelloWorld;
-//#header end
-run() {
-    exportString() <- 'Hello world!'; // свойства export* являются результатами HTTP запроса по умолчанию
+// # header end
+run () {
+     exportString () <- 'Hello world!'; // export * properties are the result of the default HTTP request
     
-    // альтернативный способ
-    // EXPORT FROM 'Hello world!'; // по умолчанию экспортирует в JSON и записывает результат как JSONFILE в exportFile 
+     // alternative way
+     // EXPORT FROM 'Hello world!'; // exports to JSON by default and writes the result as JSONFILE to exportFile
 }
