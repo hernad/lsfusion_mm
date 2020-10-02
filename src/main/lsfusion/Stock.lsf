@@ -1,19 +1,19 @@
-//#header
-//#module
+// # header
+// # module
 MODULE Stock;
-//#module end
-//#header end
+// # module end
+// # header end
 
-//#class
-CLASS Stock 'Склад';
+// # class
+CLASS Stock 'Warehouse';
 
-name 'Наименование' = DATA STRING[100] (Stock) IN base;
-address 'Адрес' = DATA STRING[150] (Stock) IN base;
-//#class end
+name 'Name' = DATA STRING [100] (Stock) IN base;
+address 'Address' = DATA STRING [150] (Stock) IN base;
+// # class end
 
-//#form
-FORM stocks 'Склады'
-	OBJECTS s = Stock
-	PROPERTIES(s) name, address, NEW, DELETE
+// # form
+FORM stocks 'Warehouses'
+OBJECTS s = Stock
+PROPERTIES (s) name, address, NEW, DELETE
 ;
-//#form end
+// # form end
