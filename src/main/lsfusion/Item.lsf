@@ -1,23 +1,23 @@
-//#header
-//#module
+// # header
+// # module
 MODULE Item;
-//#module end
-//#header end
+// # module end
+// # header end
 
-//#class
-CLASS Item 'Товар';
+// # class
+CLASS Item 'Product';
 
-name 'Наименование' = DATA STRING[100](Item) IN base;
-barcode 'Штрихкод' = DATA BPSTRING[13](Item) IN base;
-//#class end
+name 'Name' = DATA STRING [100] (Item) IN base;
+barcode 'Barcode' = DATA BPSTRING [13] (Item) IN base;
+// # class end
 
-//#price
-salePrice 'Оптовая цена' = DATA NUMERIC[17,2](Item) IN base;
-//#price end
+// # price
+salePrice 'Wholesale price' = DATA NUMERIC [17,2] (Item) IN base;
+// # price end
 
-//#form
-FORM items 'Товары'
-	OBJECTS i = Item
-	PROPERTIES(i) name, barcode, salePrice, NEW, DELETE
+// # form
+FORM items 'Products'
+OBJECTS i = Item
+PROPERTIES (i) name, barcode, salePrice, NEW, DELETE
 ;
-//#form end
+// # form end
