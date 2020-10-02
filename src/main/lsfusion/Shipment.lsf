@@ -19,22 +19,22 @@ index 'Line number' (ShipmentDetail d) =
 // # class end
 
 // # headerattributes
-number 'Invoice number' = DATA BPSTRING [10] (Shipment);
+number 'Invoice number' = DATA BPSTRING[10] (Shipment);
 date 'Invoice Date' = DATA DATE (Shipment);
 
 customer 'Customer' = DATA LegalEntity (Shipment);
 nameCustomer 'Name of the customer' (Shipment s) = name (customer (s));
 
 stock 'Warehouse' = DATA Stock (Shipment);
-nameStock 'Warehouse name' (Shipment s) = name (stock (s));
+nameStock 'Warehouse name' (Shipment s) = name (stock(s));
 // # headerattributes end
 
 // # detailattributes
 item 'Product' = DATA Item (ShipmentDetail);
 nameItem 'Item name' (ShipmentDetail d) = name (item (d));
 
-quantity 'Quantity' = DATA NUMERIC [16,4] (ShipmentDetail);
-price 'Sale price' = DATA NUMERIC [17,2] (ShipmentDetail);
+quantity 'Quantity' = DATA NUMERIC[16,4] (ShipmentDetail);
+price 'Sale price' = DATA NUMERIC[17,2] (ShipmentDetail);
 sum 'Amount of sale' (ShipmentDetail d) = quantity (d) * price (d);
 // # detailattributes end
 

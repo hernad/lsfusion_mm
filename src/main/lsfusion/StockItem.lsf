@@ -1,14 +1,7 @@
-// # header
-// # module
 MODULE StockItem;
-// # module end
 
-// # require
 REQUIRE Shipment, Receipt;
-// # require end
-// # header end
 
-// # properties
 receivedQuantity 'Receipt total' = GROUP SUM quantity (ReceiptDetail d) BY item (d), stock (receipt (d));
 shippedQuantity 'Total Consumption' = GROUP SUM quantity (ShipmentDetail d) BY item (d), stock (shipment (d));
 currentBalance 'Current balance' (Item i, Stock s) = receivedQuantity (i, s) (-) shippedQuantity (i, s);

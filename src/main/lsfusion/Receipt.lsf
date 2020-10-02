@@ -1,19 +1,11 @@
-// # header
-// # module
 MODULE Receipt;
-// # module end
 
-// # require
 REQUIRE Stock, Item, LegalEntity;
-// # require end
-// # header end
 
-// # class
 CLASS Receipt 'Receipt invoice';
 CLASS ReceiptDetail 'Receipt line';
-// # class end
 
-// # documentref
+
 receipt 'Line Document' = DATA Receipt (ReceiptDetail) NONULL DELETE;
 // # documentref end
 
@@ -24,7 +16,7 @@ index 'Line number' (ReceiptDetail d) =
 // # index end
 
 // # headerattributes
-number 'Invoice number' = DATA BPSTRING [10] (Receipt);
+number 'Invoice number' = DATA BPSTRING[10] (Receipt);
 date 'Invoice date' = DATA DATE (Receipt);
 
 supplier 'Supplier' = DATA LegalEntity (Receipt);
@@ -38,8 +30,8 @@ nameStock 'Warehouse name' (Receipt r) = name (stock (r));
 item 'Product' = DATA Item (ReceiptDetail);
 nameItem 'Product name' (ReceiptDetail d) = name (item (d));
 
-quantity 'Quantity' = DATA NUMERIC [16,4] (ReceiptDetail);
-price 'Supplier's price' = DATA NUMERIC [17,2] (ReceiptDetail);
+quantity 'Quantity' = DATA NUMERIC[16,4] (ReceiptDetail);
+price 'Supplier\'s price' = DATA NUMERIC[17,2] (ReceiptDetail);
 sum 'Supplier Amount' (ReceiptDetail d) = quantity (d) * price (d);
 // # detailattributes end
 
@@ -66,4 +58,4 @@ OBJECTS d = ReceiptDetail
 PROPERTIES (d) READONLY index, nameItem, quantity, price, sum
 FILTERS receipt (d) = r
 ;
-// # formlist end
+
