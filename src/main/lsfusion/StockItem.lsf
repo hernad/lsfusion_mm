@@ -1,27 +1,27 @@
-//#header
-//#module
+// # header
+// # module
 MODULE StockItem;
-//#module end
+// # module end
 
-//#require
+// # require
 REQUIRE Shipment, Receipt;
-//#require end
-//#header end
+// # require end
+// # header end
 
-//#properties
-receivedQuantity 'Суммарный приход' = GROUP SUM quantity(ReceiptDetail d) BY item(d), stock(receipt(d));
-shippedQuantity 'Суммарный расход' = GROUP SUM quantity(ShipmentDetail d) BY item(d), stock(shipment(d));
-currentBalance 'Текущий остаток' (Item i, Stock s) = receivedQuantity (i, s) (-) shippedQuantity (i, s);
-//#properties end
+// # properties
+receivedQuantity 'Receipt total' = GROUP SUM quantity (ReceiptDetail d) BY item (d), stock (receipt (d));
+shippedQuantity 'Total Consumption' = GROUP SUM quantity (ShipmentDetail d) BY item (d), stock (shipment (d));
+currentBalance 'Current balance' (Item i, Stock s) = receivedQuantity (i, s) (-) shippedQuantity (i, s);
+// # properties end
 
-//#constraint
-CONSTRAINT currentBalance(Item i, Stock s) < 0 MESSAGE 'Остаток по товару не может быть отрицательным';
-//#constraint end
+// # constraint
+CONSTRAINT currentBalance (Item i, Stock s) <0 MESSAGE 'The balance of the item cannot be negative';
+// # constraint end
 
-//#form
-FORM currentBalanceItemStock 'Текущие остатки'
-    OBJECTS si = (s = Stock, i = Item)
-    PROPERTIES READONLY name(i), barcode(i), name(s), currentBalance(i, s)
-    FILTERS currentBalance(i, s)
+// # form
+FORM currentBalanceItemStock 'Current balances'
+     OBJECTS si = (s = Stock, i = Item)
+     PROPERTIES READONLY name (i), barcode (i), name (s), currentBalance (i, s)
+     FILTERS currentBalance (i, s)
 ;
-//#form end
+// # form end
