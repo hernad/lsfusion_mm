@@ -1,18 +1,18 @@
-//#header
+// # header
 MODULE ExportShipments;
 
 REQUIRE Shipment;
-//#header end
+// # header end
 FORM shipment
-    OBJECTS dFrom=DATE, dTo=DATE
-    OBJECTS s=Shipment // накладная
-    PROPERTIES (s) date, customer = nameCustomer, stock = nameStock // выгружаем дату, имя покупателя (с именем customer) и имя склада (с именем stock)
-    FILTERS dFrom <= date(s) AND date(s) <= dTo // накладные за заданные даты
-    OBJECTS sd=ShipmentDetail // строки накладной     
-    FILTERS shipment(sd) = s // строки накладной из накладной
-    PROPERTIES (sd) index, item = nameItem, price, quantity // выгружаем номер, имя товара (с именем item),  количество, цену
+     OBJECTS dFrom = DATE, dTo = DATE
+     OBJECTS s = Shipment // waybill
+     PROPERTIES (s) date, customer = nameCustomer, stock = nameStock // upload the date, customer name (with customer name) and warehouse name (with stock name)
+     FILTERS dFrom <= date (s) AND date (s) <= dTo // invoices for specified dates
+     OBJECTS sd = ShipmentDetail // consignment lines
+     FILTERS shipment (sd) = s // invoice lines from the invoice
+     PROPERTIES (sd) index, item = nameItem, price, quantity // upload the number, product name (with item name), quantity, price
 ;
 
-run() {
-    EXPORT shipment OBJECTS dFrom = 2019_02_20, dTo = 2019_04_28; // выгружаем накладные в заданном периоде
+run () {
+     EXPORT shipment OBJECTS dFrom = 2019_02_20, dTo = 2019_04_28; // unload invoices in the specified period
 }
